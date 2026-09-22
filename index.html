@@ -1,17 +1,125 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Latihan 03</title>
+    <!-- Font Google: Inter untuk tampilan modern & bersih -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: #0a0a0a;
+            color: #ededed;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: #121212;
+            border: 1px solid #262626;
+            border-radius: 16px;
+            padding: 40px;
+            width: 100%;
+            max-width: 420px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Subtle glow/gradient border effect di bagian atas card */
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #ffffff, #262626);
+        }
+
+        h1 {
+            font-size: 1.75rem;
+            font-weight: 800;
+            letter-spacing: -0.025em;
+            color: #ffffff;
+            margin-bottom: 24px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Accent aksen titik putih minimalis pada Judul */
+        h1::after {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background-color: #ffffff;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        li {
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            padding: 14px 18px;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            font-weight: 400;
+            color: #a3a3a3;
+            transition: all 0.25s ease;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        /* Efek Hover Kekinian */
+        li:hover {
+            background: #ffffff;
+            color: #000000;
+            border-color: #ffffff;
+            transform: translateY(-2px);
+            font-weight: 600;
+            box-shadow: 0 8px 20px rgba(255, 255, 255, 0.15);
+        }
+
+        /* Nomor urut otomatis berdasar posisi */
+        li::before {
+            content: attr(data-index);
+            font-size: 0.75rem;
+            font-weight: 600;
+            opacity: 0.5;
+        }
+    </style>
 </head>
 <body>
-    <h1>Beda Server</h1>
-    <ul>
-        <li>Abdur Robi Alfiam</li>
-        <li>Yamani</li>
-        <li>Edbert Leo Chandra</li>
-        <li>Alghazali</li>
-    </ul>
+
+    <div class="container">
+        <h1>Beda Server</h1>
+        <ul>
+            <li data-index="01">Abdur Robi Alfiam</li>
+            <li data-index="02">Yamani</li>
+            <li data-index="03">Edbert Leo Chandra</li>
+            <li data-index="04">Alghazali</li>
+        </ul>
+    </div>
+
 </body>
 </html>
