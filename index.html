@@ -1,125 +1,108 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Latihan 03</title>
-    <!-- Font Google: Inter untuk tampilan modern & bersih -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
-        }
-
-        body {
-            background-color: #0a0a0a;
-            color: #ededed;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-
-        .container {
-            background: #121212;
-            border: 1px solid #262626;
-            border-radius: 16px;
-            padding: 40px;
-            width: 100%;
-            max-width: 420px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* Subtle glow/gradient border effect di bagian atas card */
-        .container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, #ffffff, #262626);
-        }
-
-        h1 {
-            font-size: 1.75rem;
-            font-weight: 800;
-            letter-spacing: -0.025em;
-            color: #ffffff;
-            margin-bottom: 24px;
-            text-transform: uppercase;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        /* Accent aksen titik putih minimalis pada Judul */
-        h1::after {
-            content: '';
-            width: 8px;
-            height: 8px;
-            background-color: #ffffff;
-            border-radius: 50%;
-            display: inline-block;
-        }
-
-        ul {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        li {
-            background: #1a1a1a;
-            border: 1px solid #2a2a2a;
-            padding: 14px 18px;
-            border-radius: 10px;
-            font-size: 0.95rem;
-            font-weight: 400;
-            color: #a3a3a3;
-            transition: all 0.25s ease;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        /* Efek Hover Kekinian */
-        li:hover {
-            background: #ffffff;
-            color: #000000;
-            border-color: #ffffff;
-            transform: translateY(-2px);
-            font-weight: 600;
-            box-shadow: 0 8px 20px rgba(255, 255, 255, 0.15);
-        }
-
-        /* Nomor urut otomatis berdasar posisi */
-        li::before {
-            content: attr(data-index);
-            font-size: 0.75rem;
-            font-weight: 600;
-            opacity: 0.5;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Latihan 03 — Beda Server</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root{
+    --paper:#ffffff;
+    --ink:#0a0a0a;
+    --line:#dcdcdc;
+    --muted:#8a8a8a;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Space Grotesk', sans-serif;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:32px 20px;
+  }
+  .sheet{
+    width:100%;
+    max-width:480px;
+  }
+  .meta{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.02em;
+    color:var(--muted);
+    margin-bottom:18px;
+  }
+  h1{
+    font-size:clamp(2.2rem, 8vw, 3rem);
+    font-weight:700;
+    letter-spacing:-0.03em;
+    line-height:1;
+    margin-bottom:28px;
+  }
+  .rule{
+    height:1px;
+    background:var(--ink);
+    margin-bottom:4px;
+  }
+  ul{ list-style:none; }
+  li{
+    display:flex;
+    align-items:baseline;
+    gap:18px;
+    padding:18px 4px;
+    border-bottom:1px solid var(--line);
+    transition:background 0.15s ease, color 0.15s ease, padding-left 0.15s ease;
+  }
+  li:last-child{ border-bottom:1px solid var(--ink); }
+  li:hover{
+    background:var(--ink);
+    color:var(--paper);
+    padding-left:12px;
+  }
+  li .idx{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.75rem;
+    color:var(--muted);
+    min-width:20px;
+    flex-shrink:0;
+    transition:color 0.15s ease;
+  }
+  li:hover .idx{ color:var(--paper); opacity:0.6; }
+  li .name{
+    font-size:1.05rem;
+    font-weight:500;
+    letter-spacing:-0.01em;
+  }
+  footer{
+    margin-top:24px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.68rem;
+    color:var(--muted);
+    text-align:right;
+  }
+</style>
 </head>
 <body>
-
-    <div class="container">
-        <h1>Beda Server</h1>
-        <ul>
-            <li data-index="01">Abdur Robi Alfiam</li>
-            <li data-index="02">Yamani</li>
-            <li data-index="03">Edbert Leo Chandra</li>
-            <li data-index="04">Alghazali</li>
-        </ul>
+  <div class="sheet">
+    <div class="meta">
+      <span>Latihan 03</span>
+      <span>04 anggota</span>
     </div>
-
+    <h1>Beda Server</h1>
+    <div class="rule"></div>
+    <ul>
+      <li><span class="idx">01</span><span class="name">Abdur Robi Alfiam</span></li>
+      <li><span class="idx">02</span><span class="name">Yamani</span></li>
+      <li><span class="idx">03</span><span class="name">Edbert Leo Chandra</span></li>
+      <li><span class="idx">04</span><span class="name">Alghazali</span></li>
+    </ul>
+    <footer>daftar anggota</footer>
+  </div>
 </body>
 </html>
